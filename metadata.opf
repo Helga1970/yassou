@@ -1,0 +1,18 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="uuid_id" version="2.0">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+        <dc:creator opf:role="aut" opf:file-as="LIPA, SHAILY">Shaily Lipa</dc:creator>
+<dc:identifier opf:scheme="calibre" id="calibre_id">92c9d66a-bf27-43a6-ac92-95bed973c7bf</dc:identifier>
+        <dc:identifier opf:scheme="uuid" id="uuid_id">92c9d66a-bf27-43a6-ac92-95bed973c7bf</dc:identifier>
+        <dc:contributor opf:file-as="calibre" opf:role="bkp">calibre (8.4.0) [https://calibre-ebook.com]</dc:contributor>
+        <dc:date>2025-03-11T00:00:00+00:00</dc:date>
+        <dc:description>&lt;B&gt;From an Israel cookbook author and TV personality, celebrate the original Mediterranean diet with this &amp;quot;delicious journey&amp;quot; (Adeena Sussman, author of &lt;I&gt;Shabbat &lt;/I&gt;and &lt;I&gt;Sababa&lt;/I&gt;).&lt;/B&gt;&lt;BR /&gt; Greek food, born of the land where sun meets sea, is built on the delicious, healthy pillars of abundant fresh vegetables and fish, olive oil, whole grains, legumes, artisanal cheeses, and fruit&amp;mdash;accompanied by an occasional glass of wine.&amp;#160;This food&amp;rsquo;s everlasting appeal is captured in the recipes and gorgeous photographs of &lt;I&gt;Yassou&lt;/I&gt;, inspired by the spirit of the word used to greet a loved one or a friend, perhaps when inviting them to share a bite.&lt;BR /&gt; From beloved mezes like Tzatziki, Fried Zucchini, and Shrimp Saganaki through a menu of stuffed vegetables, soups for all seasons, grilled mains like souvlaki, and savory pies like Spanakopita, these 80 must-make dishes are steeped in tradition and as easy to prepare as they are thoroughly pleasurable to...</dc:description>
+        <dc:publisher>Workman Publishing Company</dc:publisher>
+        <dc:title>Yassou</dc:title>
+<meta name="calibre:title_sort" content="Yassou"/>
+<dc:language>eng</dc:language>
+</metadata>
+    <guide>
+        <reference type="cover" title="Обложка" href="cover.jpg"/>
+    </guide>
+</package>
