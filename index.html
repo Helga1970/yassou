@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html> <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -8,24 +8,25 @@
     <title>Yassou</title>
 
     <script>
-        // Отключение правой кнопки мыши
+        // Отключение правой кнопки мыши на всей странице
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             // alert('Копирование и сохранение запрещены!'); // Можно включить для уведомления
         });
 
-        // Отключение выделения текста
+        // Отключение выделения текста на всей странице
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
         });
 
-        // Отключение перетаскивания (для картинок, текста)
+        // Отключение перетаскивания (для картинок, текста) на всей странице
         document.addEventListener('dragstart', function(e) {
             e.preventDefault();
         });
     </script>
 </head>
-<body>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+    </html>
 <div class="calibre" id="calibre_link-0">
 <p id="calibre_link-121" class="calibre1"><img src="images/000049.jpg" alt="" class="calibre2" /></p>
 <h2 id="calibre_link-122" class="calibre3"><span class="calibre4"><b class="calibre5">YASSOU</b></span></h2>
