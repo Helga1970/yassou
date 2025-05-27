@@ -8,28 +8,27 @@ export default async (request, context) => {
   console.log('Referer header:', referer);
 
   // Разрешённые домены
-  // Здесь мы оставляем те домены, которые разрешил ChatGPT,
-  // и добавляем домен самого Netlify сайта.
   const allowedReferers = [
     'https://pro-culinaria.ru',
     'http://pro-culinaria.ru',
     'https://www.pro-culinaria.ru',
     'http://www.pro-culinaria.ru',
-    'pro-culinaria.ru',         // Оставляем эти как есть, чтобы не нарушать логику ChatGPT
-    'www.pro-culinaria.ru',     // Оставляем эти как есть, чтобы не нарушать логику ChatGPT
 
     // !!! ВАЖНО !!!
-    // Добавляем домен самого Netlify сайта, чтобы он мог загружать свои ресурсы (изображения, CSS).
-    // Когда браузер запрашивает картинки со страницы pesto-book.netlify.app,
-    // реферером будет сам pesto-book.netlify.app.
-    'https://pesto-book.netlify.app',
-    'http://pesto-book.netlify.app',
+    // Добавляем домен самого Netlify сайта, чтобы он мог загружать свои ресурсы (изображения, CSS, JS).
+    // Реферер всегда будет включать протокол (http:// или https://).
+    `https://${new URL(requestUrl).hostname}`, // Динамически получаем HTTPS домен Netlify сайта
+    `http://${new URL(requestUrl).hostname}`,  // Динамически получаем HTTP домен Netlify сайта
+
+    // Если у вас есть кастомный домен, привязанный к Netlify, добавьте его сюда тоже:
+    // 'https://ваш-кастомный-домен.com',
+    // 'http://ваш-кастомный-домен.com',
   ];
 
   if (referer) {
     try {
       const refererUrl = new URL(referer);
-      const refererOrigin = refererUrl.origin;
+      const refererOrigin = refererUrl.origin; // Получаем origin (например, "https://example.com")
 
       console.log('Parsed Referer Origin:', refererOrigin);
 
@@ -44,10 +43,11 @@ export default async (request, context) => {
       }
     } catch (e) {
       console.error("Invalid referer URL or parsing error:", referer, e);
+      // Если URL реферера невалидный, его тоже нужно блокировать.
     }
   } else {
-    // Если заголовок Referer отсутствует (например, прямой заход),
-    // текущая логика блокирует доступ.
+    // Если заголовок Referer отсутствует (например, прямой заход, или из-за настроек браузера/приватности),
+    // текущая логика блокирует доступ. Это правильно для вашей цели "только с 1 сайта".
     console.log('No referer header found. Blocking.');
   }
 
