@@ -15,15 +15,15 @@ export default async (request, context) => {
     'http://pro-culinaria.ru',
     'https://www.pro-culinaria.ru',
     'http://www.pro-culinaria.ru',
-    'pro-culinaria.ru',         // Оставляем эти как есть, чтобы не нарушать логику ChatGPT
-    'www.pro-culinaria.ru',     // Оставляем эти как есть, чтобы не нарушать логику ChatGPT
+    'pro-culinaria.ru',
+    'www.pro-culinaria.ru',
 
     // !!! ВАЖНО !!!
     // Добавляем домен самого Netlify сайта, чтобы он мог загружать свои ресурсы (изображения, CSS).
-    // Когда браузер запрашивает картинки со страницы pesto-book.netlify.app,
-    // реферером будет сам pesto-book.netlify.app.
-    'https://pesto-book.netlify.app',
-    'http://pesto-book.netlify.app',
+    // Когда браузер запрашивает картинки со страницы yassou1.netlify.app,
+    // реферером будет сам yassou1.netlify.app.
+    'https://yassou1.netlify.app', // ИЗМЕНЕНО: yassou заменено на yassou1
+    'http://yassou1.netlify.app',  // ИЗМЕНЕНО: yassou заменено на yassou1
   ];
 
   if (referer) {
