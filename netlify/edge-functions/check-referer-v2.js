@@ -8,9 +8,8 @@ export default async (request, context) => {
   console.log('Referer header:', referer);
 
   // Разрешённые домены
-  // Здесь мы оставляем те домены, которые разрешил ChatGPT,
-  // и добавляем домен самого Netlify сайта.
   const allowedReferers = [
+    // Домены, с которых разрешен переход на ваш сайт
     'https://pro-culinaria.ru',
     'http://pro-culinaria.ru',
     'https://www.pro-culinaria.ru',
@@ -18,12 +17,13 @@ export default async (request, context) => {
     'pro-culinaria.ru',
     'www.pro-culinaria.ru',
 
-    // !!! ВАЖНО !!!
-    // Добавляем домен самого Netlify сайта, чтобы он мог загружать свои ресурсы (изображения, CSS).
-    // Когда браузер запрашивает картинки со страницы yassou1.netlify.app,
-    // реферером будет сам yassou1.netlify.app.
-    'https://yassou1.netlify.app', // ИЗМЕНЕНО: yassou заменено на yassou1
-    'http://yassou1.netlify.app',  // ИЗМЕНЕНО: yassou заменено на yassou1
+    // Домен Netlify для yassou1, чтобы внутренние ресурсы грузились, если сайт открыт напрямую через него
+    'https://yassou1.netlify.app',
+    'http://yassou1.netlify.app',
+
+    // ВАШ НОВЫЙ ПОЛЬЗОВАТЕЛЬСКИЙ ДОМЕН (для внутренних ресурсов сайта yassou)
+    'https://yassou.proculinaria-book.ru', // <-- ДОБАВИТЬ ЭТУ СТРОКУ
+    'http://yassou.proculinaria-book.ru',  // <-- И ЭТУ СТРОКУ
   ];
 
   if (referer) {
@@ -33,25 +33,20 @@ export default async (request, context) => {
 
       console.log('Parsed Referer Origin:', refererOrigin);
 
-      // Проверяем, входит ли refererOrigin в список разрешённых доменов.
       const isAllowed = allowedReferers.includes(refererOrigin);
 
       console.log('Is referer allowed?', isAllowed);
 
       if (isAllowed) {
-        // Если реферер разрешён, пропускаем запрос
         return context.next();
       }
     } catch (e) {
       console.error("Invalid referer URL or parsing error:", referer, e);
     }
   } else {
-    // Если заголовок Referer отсутствует (например, прямой заход),
-    // текущая логика блокирует доступ.
     console.log('No referer header found. Blocking.');
   }
 
-  // Если реферер отсутствует или не разрешён, блокируем доступ
   console.log('Blocking request: Referer not allowed or missing.');
   return new Response('Access Denied: This page is only accessible from allowed sources.', {
     status: 403,
